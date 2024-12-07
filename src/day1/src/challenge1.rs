@@ -38,7 +38,8 @@ fn calculate_difference_at_index(array1: &[i32], array2: &[i32], index: usize) -
 }
 
 fn main() {
-    match read_arrays_from_file("src/day0/src/input.txt") {
+    const FILENAME: &str = "src/day1/input.txt";
+    match read_arrays_from_file(FILENAME) {
         Ok((mut array1, mut array2)) => {
             sort_array(&mut array1);
             sort_array(&mut array2);
@@ -46,7 +47,6 @@ fn main() {
             let mut sum_of_differences: i32 = 0;
             for i in 0..array1.len().min(array2.len()) {
                 if let Some(diff) = calculate_difference_at_index(&array1, &array2, i) {
-                    println!("Difference at index {}", diff);
                     sum_of_differences += diff;
                 }
             }
